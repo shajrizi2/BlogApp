@@ -1,0 +1,49 @@
+<% include partials/header %>
+
+<div class="ui main text container segment">
+  <div class="ui huge header"><%= blog.title %></div>
+  <div class="ui top atached">
+    <div class="item">
+      <img class="ui centered rounded image" src="<%= blog.image %>" />
+      <div class="content">
+        <span><%= blog.created.toDateString() %></span>
+      </div>
+      <div class="description">
+        <p><%- blog.body %></p>
+      </div>
+      <a class="ui orange basic button" href="/blogs/<%= blog._id %>/edit"
+        >Update</a
+      >
+      <form
+        id="delete"
+        action="/blogs/<%= blog._id %>?_method=DELETE"
+        method="POST"
+      >
+        <button class="ui red basic button">Delete</button>
+      </form>
+<!--Comment Form -->
+      <div class="ui comments">
+        <h3>Comments</h3>
+        
+            <form class="ui comment form" method="POST" onsubmit="return doComment(this);">
+               
+                <div class="field">
+                  <textarea spellcheck="false"></textarea>
+                </div>
+                <div class="ui blue labeled submit icon button">
+                  <i class="icon edit"></i> Add Comment
+                </div>
+              </form>
+        </div>
+
+        
+      </div>
+      
+    </div>
+
+ 
+
+    <% include partials/footer %>
+  </div>
+</div>
+''
